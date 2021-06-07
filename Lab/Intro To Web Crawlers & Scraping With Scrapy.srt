@@ -1,0 +1,2368 @@
+1
+00:00:00,530 --> 00:00:06,200
+[Music]
+
+2
+00:00:06,200 --> 00:00:08,970
+this video is sponsored by kite which is
+
+3
+00:00:08,970 --> 00:00:11,190
+a Python extension for vs code and many
+
+4
+00:00:11,190 --> 00:00:12,960
+other modern editors it offers
+
+5
+00:00:12,960 --> 00:00:14,820
+intelligent snippets and one-click
+
+6
+00:00:14,820 --> 00:00:16,760
+documentation using a program called
+
+7
+00:00:16,760 --> 00:00:19,380
+co-pilot that I'll actually be using in
+
+8
+00:00:19,380 --> 00:00:21,660
+this project to download kite on any
+
+9
+00:00:21,660 --> 00:00:23,220
+platform click on the link in the
+
+10
+00:00:23,220 --> 00:00:26,519
+description below what's going on guys
+
+11
+00:00:26,519 --> 00:00:28,019
+in this video we're gonna look at
+
+12
+00:00:28,019 --> 00:00:30,840
+scrapey which is a Python framework for
+
+13
+00:00:30,840 --> 00:00:33,000
+crawling websites and extracting data
+
+14
+00:00:33,000 --> 00:00:35,550
+and there's a bunch of reasons why you
+
+15
+00:00:35,550 --> 00:00:37,050
+might want to use something like this
+
+16
+00:00:37,050 --> 00:00:39,540
+for data analysis for data mining
+
+17
+00:00:39,540 --> 00:00:42,480
+information processing a lot of services
+
+18
+00:00:42,480 --> 00:00:44,670
+and websites give you data api's to work
+
+19
+00:00:44,670 --> 00:00:46,920
+with but not all of them do so there
+
+20
+00:00:46,920 --> 00:00:48,600
+might be a website where you you want
+
+21
+00:00:48,600 --> 00:00:50,129
+some data but there's no API available
+
+22
+00:00:50,129 --> 00:00:52,680
+so you can scrape the data yourself now
+
+23
+00:00:52,680 --> 00:00:54,539
+you have to keep in mind that there's a
+
+24
+00:00:54,539 --> 00:00:56,850
+lot of ethics and even legality that
+
+25
+00:00:56,850 --> 00:00:58,980
+goes into web scraping so if you're
+
+26
+00:00:58,980 --> 00:01:00,870
+using it in a professional sense for a
+
+27
+00:01:00,870 --> 00:01:02,789
+product or your company or something you
+
+28
+00:01:02,789 --> 00:01:04,559
+really want to look at that if you're
+
+29
+00:01:04,559 --> 00:01:06,390
+scraping data from another website you
+
+30
+00:01:06,390 --> 00:01:07,530
+want to look at their Terms and
+
+31
+00:01:07,530 --> 00:01:10,200
+Conditions and you know you want to be
+
+32
+00:01:10,200 --> 00:01:12,330
+ethical when you're dealing with web
+
+33
+00:01:12,330 --> 00:01:13,979
+scraping and that's really all I'm going
+
+34
+00:01:13,979 --> 00:01:15,360
+to say on the subject I'm not going to
+
+35
+00:01:15,360 --> 00:01:17,280
+tell you what to do and what not to do
+
+36
+00:01:17,280 --> 00:01:19,770
+so what we're going to do is scrape the
+
+37
+00:01:19,770 --> 00:01:22,140
+this right here this blog it's called
+
+38
+00:01:22,140 --> 00:01:25,290
+the scraping blog scraping hub blog and
+
+39
+00:01:25,290 --> 00:01:27,240
+I've seen this in a bunch of tutorial so
+
+40
+00:01:27,240 --> 00:01:29,100
+I figured it's fine for us to use in
+
+41
+00:01:29,100 --> 00:01:32,729
+this video and it's just a regular blog
+
+42
+00:01:32,729 --> 00:01:34,890
+and you can see that it has a bunch of
+
+43
+00:01:34,890 --> 00:01:36,930
+posts and then it has other pages of
+
+44
+00:01:36,930 --> 00:01:39,000
+posts so what I'd like to do is scrape
+
+45
+00:01:39,000 --> 00:01:42,990
+every single post and get the title so I
+
+46
+00:01:42,990 --> 00:01:45,420
+want the title the date and the author
+
+47
+00:01:45,420 --> 00:01:46,950
+and of course you could get other stuff
+
+48
+00:01:46,950 --> 00:01:48,720
+as well but those are the three things
+
+49
+00:01:48,720 --> 00:01:51,060
+that I really want to target and by the
+
+50
+00:01:51,060 --> 00:01:53,340
+end of this I want to be able to run a
+
+51
+00:01:53,340 --> 00:01:55,860
+command to scrape the website get all
+
+52
+00:01:55,860 --> 00:01:58,890
+that stuff and put it into a large JSON
+
+53
+00:01:58,890 --> 00:02:00,719
+file and of course you could do whatever
+
+54
+00:02:00,719 --> 00:02:02,219
+you like with it you could save it to a
+
+55
+00:02:02,219 --> 00:02:05,100
+database you could create a CSV you can
+
+56
+00:02:05,100 --> 00:02:06,659
+run it through what are called pipelines
+
+57
+00:02:06,659 --> 00:02:09,690
+and mess with the data after you extract
+
+58
+00:02:09,690 --> 00:02:12,120
+it there's a lot you can do but this is
+
+59
+00:02:12,120 --> 00:02:12,830
+kind of an inch
+
+60
+00:02:12,830 --> 00:02:14,810
+doctoral level course so we're gonna
+
+61
+00:02:14,810 --> 00:02:17,780
+create a script like I said to extract
+
+62
+00:02:17,780 --> 00:02:20,480
+to crawl and extract the data from the
+
+63
+00:02:20,480 --> 00:02:23,120
+blog and we're also going to be working
+
+64
+00:02:23,120 --> 00:02:24,950
+in the shell because scrapy has a shell
+
+65
+00:02:24,950 --> 00:02:28,280
+where we can directly run selectors and
+
+66
+00:02:28,280 --> 00:02:30,530
+run methods on those selectors to get
+
+67
+00:02:30,530 --> 00:02:33,050
+data all right so let's go ahead and
+
+68
+00:02:33,050 --> 00:02:35,000
+jump into vs code and I just I also have
+
+69
+00:02:35,000 --> 00:02:36,890
+my terminal opened down here I'm using
+
+70
+00:02:36,890 --> 00:02:39,770
+my integrated terminal and as with any
+
+71
+00:02:39,770 --> 00:02:41,720
+Python project we're gonna create a
+
+72
+00:02:41,720 --> 00:02:43,520
+virtual environment and I'm just going
+
+73
+00:02:43,520 --> 00:02:46,730
+to use the virtual env for that so if we
+
+74
+00:02:46,730 --> 00:02:51,110
+do Python 3 dash M V env and create a
+
+75
+00:02:51,110 --> 00:02:54,320
+folder called V env so that will be our
+
+76
+00:02:54,320 --> 00:02:55,820
+virtual environment and you can see
+
+77
+00:02:55,820 --> 00:02:57,320
+inside the bin folder there's an
+
+78
+00:02:57,320 --> 00:02:59,690
+activate script so we just want to call
+
+79
+00:02:59,690 --> 00:03:04,450
+that with source V and V slash bin slash
+
+80
+00:03:04,450 --> 00:03:07,520
+activate okay so they'll activate our
+
+81
+00:03:07,520 --> 00:03:09,110
+virtual environment and if you're
+
+82
+00:03:09,110 --> 00:03:10,970
+envious code you want to just command
+
+83
+00:03:10,970 --> 00:03:14,000
+shift P or ctrl shift P search for
+
+84
+00:03:14,000 --> 00:03:16,790
+Python select interpreter and just
+
+85
+00:03:16,790 --> 00:03:19,130
+select your virtual environment mine is
+
+86
+00:03:19,130 --> 00:03:22,160
+called V and V okay so now we should be
+
+87
+00:03:22,160 --> 00:03:24,230
+all set so I'm going to install scrapey
+
+88
+00:03:24,230 --> 00:03:26,090
+and we want to use pit for that or pipi
+
+89
+00:03:26,090 --> 00:03:28,310
+and V if you're using that so let's
+
+90
+00:03:28,310 --> 00:03:32,840
+install scrapy okay so once crepe is
+
+91
+00:03:32,840 --> 00:03:35,120
+installed we can go ahead and create a
+
+92
+00:03:35,120 --> 00:03:40,340
+project by saying scrapey start project
+
+93
+00:03:40,340 --> 00:03:41,780
+and then i'm just going to call this
+
+94
+00:03:41,780 --> 00:03:45,920
+we'll call it post scrape our post crawl
+
+95
+00:03:45,920 --> 00:03:47,090
+whatever you want to call it and then
+
+96
+00:03:47,090 --> 00:03:50,630
+we're just going to CD into post grade
+
+97
+00:03:50,630 --> 00:03:53,540
+and then let's take a look at the folder
+
+98
+00:03:53,540 --> 00:03:55,400
+up here that was created now there's
+
+99
+00:03:55,400 --> 00:03:57,320
+another folder called post scrape inside
+
+100
+00:03:57,320 --> 00:04:00,260
+of it along with this scrapy dot CFG
+
+101
+00:04:00,260 --> 00:04:03,260
+file and inside this folder we have a
+
+102
+00:04:03,260 --> 00:04:06,890
+file for middlewares for pipelines we
+
+103
+00:04:06,890 --> 00:04:08,330
+have something called item pipelines
+
+104
+00:04:08,330 --> 00:04:10,580
+where when you scrape when you crawl and
+
+105
+00:04:10,580 --> 00:04:12,860
+you extract the data you can do certain
+
+106
+00:04:12,860 --> 00:04:14,630
+things with it you can cleanse it you
+
+107
+00:04:14,630 --> 00:04:17,690
+can run validation on it different
+
+108
+00:04:17,690 --> 00:04:19,010
+things we're not going to get into that
+
+109
+00:04:19,010 --> 00:04:21,168
+that's that's more advanced and what I
+
+110
+00:04:21,168 --> 00:04:23,090
+want to do here all I want to do is
+
+111
+00:04:23,090 --> 00:04:25,640
+create a spider so inside the spiders
+
+112
+00:04:25,640 --> 00:04:26,450
+folder we're going to
+
+113
+00:04:26,450 --> 00:04:28,730
+create a new file called posts
+
+114
+00:04:28,730 --> 00:04:32,450
+underscore spider dot pi okay so this is
+
+115
+00:04:32,450 --> 00:04:34,730
+going to be our main file that we work
+
+116
+00:04:34,730 --> 00:04:36,530
+with and the first thing we're going to
+
+117
+00:04:36,530 --> 00:04:39,590
+do is import scrapie so that we can use
+
+118
+00:04:39,590 --> 00:04:42,320
+it and then we need to create a spider
+
+119
+00:04:42,320 --> 00:04:44,930
+class so let's say class we'll call it
+
+120
+00:04:44,930 --> 00:04:50,740
+posts spider and this needs to extend
+
+121
+00:04:50,740 --> 00:04:54,200
+scrapey dot spider now I want to take a
+
+122
+00:04:54,200 --> 00:04:57,950
+look at this this spider class and I'm
+
+123
+00:04:57,950 --> 00:04:59,750
+going to use kite to do that so the kite
+
+124
+00:04:59,750 --> 00:05:02,270
+extension gives us this docks link which
+
+125
+00:05:02,270 --> 00:05:04,610
+will actually open up copilot and it'll
+
+126
+00:05:04,610 --> 00:05:06,650
+show us everything that has to do with
+
+127
+00:05:06,650 --> 00:05:09,170
+this class okay so you can see all the
+
+128
+00:05:09,170 --> 00:05:10,880
+different members I just want to show
+
+129
+00:05:10,880 --> 00:05:13,400
+you a couple things so name is something
+
+130
+00:05:13,400 --> 00:05:15,350
+we're going to need it's a string to
+
+131
+00:05:15,350 --> 00:05:17,780
+identify the spider and it has to be
+
+132
+00:05:17,780 --> 00:05:20,390
+unique it has to be a string so let's go
+
+133
+00:05:20,390 --> 00:05:23,690
+ahead and add a name property here we'll
+
+134
+00:05:23,690 --> 00:05:27,620
+call this posts and then if we go back
+
+135
+00:05:27,620 --> 00:05:31,340
+to kite copilot we also want this start
+
+136
+00:05:31,340 --> 00:05:34,400
+urls which is a list or an array of URLs
+
+137
+00:05:34,400 --> 00:05:37,280
+that we want to crawl from so let's say
+
+138
+00:05:37,280 --> 00:05:40,790
+starts underscore URLs set that to a
+
+139
+00:05:40,790 --> 00:05:47,890
+list and we're gonna do HTTP blog dot
+
+140
+00:05:47,890 --> 00:05:52,880
+scraping hub comm and we can do slash
+
+141
+00:05:52,880 --> 00:06:12,020
+let's do /page /parent eyre page and put
+
+142
+00:06:12,020 --> 00:06:15,350
+it into a separate HTML file which isn't
+
+143
+00:06:15,350 --> 00:06:17,780
+very useful on its own aside from maybe
+
+144
+00:06:17,780 --> 00:06:20,180
+offline web viewing but it'll give you
+
+145
+00:06:20,180 --> 00:06:22,910
+an idea of how this works now we also
+
+146
+00:06:22,910 --> 00:06:27,110
+want a parse method so let's see right
+
+147
+00:06:27,110 --> 00:06:29,390
+here so parse which takes in a response
+
+148
+00:06:29,390 --> 00:06:32,030
+this is the default callback used by
+
+149
+00:06:32,030 --> 00:06:34,430
+scrapey to process download responses
+
+150
+00:06:34,430 --> 00:06:36,980
+when their requests don't specify a
+
+151
+00:06:36,980 --> 00:06:39,939
+callback so it's basically in charge of
+
+152
+00:06:39,939 --> 00:06:42,069
+the response in returning the scrape
+
+153
+00:06:42,069 --> 00:06:45,689
+data so let's go ahead and define parse
+
+154
+00:06:45,689 --> 00:06:49,300
+and we want to pass himself since it's a
+
+155
+00:06:49,300 --> 00:06:51,550
+method of this class and then it takes
+
+156
+00:06:51,550 --> 00:06:54,789
+in a response okay so the response is
+
+157
+00:06:54,789 --> 00:06:57,360
+basically the the data that we scrape
+
+158
+00:06:57,360 --> 00:06:59,979
+now in this case we're just going to
+
+159
+00:06:59,979 --> 00:07:02,650
+basically copy both of these pages and
+
+160
+00:07:02,650 --> 00:07:05,439
+create two new HTML files with the same
+
+161
+00:07:05,439 --> 00:07:07,719
+exact HTML so we're scraping the entire
+
+162
+00:07:07,719 --> 00:07:11,039
+page later on we're gonna target certain
+
+163
+00:07:11,039 --> 00:07:13,180
+certain elements of the page using
+
+164
+00:07:13,180 --> 00:07:15,550
+selectors and and put them into a JSON
+
+165
+00:07:15,550 --> 00:07:17,590
+file so I'm going to create a variable
+
+166
+00:07:17,590 --> 00:07:20,830
+called page and set that to response dot
+
+167
+00:07:20,830 --> 00:07:23,169
+URL so that will give us both of the
+
+168
+00:07:23,169 --> 00:07:25,539
+dealing with both of these URLs and I
+
+169
+00:07:25,539 --> 00:07:27,580
+just want to get the page number so in
+
+170
+00:07:27,580 --> 00:07:30,789
+this case one and two so we can use the
+
+171
+00:07:30,789 --> 00:07:33,310
+split method and we'll say we want to
+
+172
+00:07:33,310 --> 00:07:36,099
+split them by the slash and we want to
+
+173
+00:07:36,099 --> 00:07:39,639
+go one from the end so one slash from
+
+174
+00:07:39,639 --> 00:07:41,469
+the end and we should end up here at the
+
+175
+00:07:41,469 --> 00:07:43,629
+number so that should put either one or
+
+176
+00:07:43,629 --> 00:07:45,550
+two depending on whatever page or
+
+177
+00:07:45,550 --> 00:07:48,610
+scraping into this variable then we want
+
+178
+00:07:48,610 --> 00:07:51,400
+to set a file name and we're gonna set
+
+179
+00:07:51,400 --> 00:07:54,370
+it to posts - and then whatever the page
+
+180
+00:07:54,370 --> 00:07:57,849
+number so I'm gonna use my percent s by
+
+181
+00:07:57,849 --> 00:08:02,319
+my placeholder here dot HTML and then we
+
+182
+00:08:02,319 --> 00:08:04,389
+want to replace that with whatever the
+
+183
+00:08:04,389 --> 00:08:07,419
+page number now to actually create the
+
+184
+00:08:07,419 --> 00:08:10,500
+file we need to let's say with open and
+
+185
+00:08:10,500 --> 00:08:12,759
+that's going to take in the file name
+
+186
+00:08:12,759 --> 00:08:15,610
+and the right mode or the the file mode
+
+187
+00:08:15,610 --> 00:08:19,599
+which is going to be write binary as F
+
+188
+00:08:19,599 --> 00:08:23,740
+and then we're gonna as F and then we'll
+
+189
+00:08:23,740 --> 00:08:28,690
+say F dot right and we're gonna write to
+
+190
+00:08:28,690 --> 00:08:31,449
+the file the response dot body which is
+
+191
+00:08:31,449 --> 00:08:34,390
+the entire HTML all the HTML from both
+
+192
+00:08:34,390 --> 00:08:37,208
+of these pages will be put into these
+
+193
+00:08:37,208 --> 00:08:40,269
+files so let's save that and we can run
+
+194
+00:08:40,269 --> 00:08:44,169
+this with scrapey crawl and then
+
+195
+00:08:44,169 --> 00:08:46,510
+whatever we cut whatever the name is in
+
+196
+00:08:46,510 --> 00:08:48,850
+this case posts okay so whatever we put
+
+197
+00:08:48,850 --> 00:08:52,529
+here is what we want to put here
+
+198
+00:08:52,529 --> 00:08:54,940
+okay so we ran it now you can see over
+
+199
+00:08:54,940 --> 00:08:58,149
+here we have post - one and post - two
+
+200
+00:08:58,149 --> 00:09:01,839
+HTML so post - one is going to be this
+
+201
+00:09:01,839 --> 00:09:03,850
+so we just scraped the entire thing and
+
+202
+00:09:03,850 --> 00:09:06,519
+put it into this file and I can even
+
+203
+00:09:06,519 --> 00:09:08,880
+open this I'll open it with live server
+
+204
+00:09:08,880 --> 00:09:12,670
+and right on my localhost now we have
+
+205
+00:09:12,670 --> 00:09:16,630
+that entire page okay so I mean this is
+
+206
+00:09:16,630 --> 00:09:18,310
+it is good I guess for like offline
+
+207
+00:09:18,310 --> 00:09:20,980
+viewing or or for some reason if you
+
+208
+00:09:20,980 --> 00:09:25,110
+need to scrape an entire website so now
+
+209
+00:09:25,110 --> 00:09:28,959
+we're gonna take a break from from the
+
+210
+00:09:28,959 --> 00:09:30,250
+file for a little bit and we're gonna
+
+211
+00:09:30,250 --> 00:09:32,350
+work in the terminal because we're gonna
+
+212
+00:09:32,350 --> 00:09:34,149
+work with the shell just to kind of show
+
+213
+00:09:34,149 --> 00:09:36,730
+you how to select things how to use
+
+214
+00:09:36,730 --> 00:09:39,699
+methods and so on so the way we go into
+
+215
+00:09:39,699 --> 00:09:42,759
+our shell is we call scrapy shell and
+
+216
+00:09:42,759 --> 00:09:46,149
+then the the domain or the URL that we
+
+217
+00:09:46,149 --> 00:09:50,589
+want to crawl so in this case HTTP blog
+
+218
+00:09:50,589 --> 00:09:55,000
+dot scraping I can't even I can't
+
+219
+00:09:55,000 --> 00:09:59,370
+remember the URL scraping hub dot-com
+
+220
+00:09:59,370 --> 00:10:02,889
+okay so from here I'm just gonna clear
+
+221
+00:10:02,889 --> 00:10:06,370
+this stuff up with ctrl L so from here
+
+222
+00:10:06,370 --> 00:10:09,610
+we can we can use selectors CSS
+
+223
+00:10:09,610 --> 00:10:12,519
+selectors so we do that as we take that
+
+224
+00:10:12,519 --> 00:10:14,500
+response object which is the same as
+
+225
+00:10:14,500 --> 00:10:17,410
+this right here okay so later on we're
+
+226
+00:10:17,410 --> 00:10:18,670
+going to do this the same stuff we're
+
+227
+00:10:18,670 --> 00:10:20,170
+doing in here we're going to be doing in
+
+228
+00:10:20,170 --> 00:10:22,899
+our parse method so to use a CSS
+
+229
+00:10:22,899 --> 00:10:26,170
+selector we just do dot CSS and let's
+
+230
+00:10:26,170 --> 00:10:29,380
+say we want to get the title so what
+
+231
+00:10:29,380 --> 00:10:31,120
+this returns is something called the
+
+232
+00:10:31,120 --> 00:10:33,639
+selector list which represents a list of
+
+233
+00:10:33,639 --> 00:10:36,279
+selector objects that wrap around HTML
+
+234
+00:10:36,279 --> 00:10:39,009
+elements so you can see selector it has
+
+235
+00:10:39,009 --> 00:10:40,959
+the XPath which I'll talk about in a
+
+236
+00:10:40,959 --> 00:10:43,509
+little bit and data is going to be the
+
+237
+00:10:43,509 --> 00:10:45,579
+the actual element in this case the
+
+238
+00:10:45,579 --> 00:10:48,910
+title with the tags and the text inside
+
+239
+00:10:48,910 --> 00:10:50,740
+of it and if we look at the title of
+
+240
+00:10:50,740 --> 00:10:54,160
+this it's the scraping hub blog alright
+
+241
+00:10:54,160 --> 00:10:57,850
+so if we want to get just the element
+
+242
+00:10:57,850 --> 00:11:01,750
+then we can run response dot CSS title
+
+243
+00:11:01,750 --> 00:11:03,670
+and we can run a method on it such as
+
+244
+00:11:03,670 --> 00:11:04,280
+get
+
+245
+00:11:04,280 --> 00:11:07,040
+so what get does is it takes the first
+
+246
+00:11:07,040 --> 00:11:10,580
+match and returns it so you can see now
+
+247
+00:11:10,580 --> 00:11:13,220
+we just get the actual element now let's
+
+248
+00:11:13,220 --> 00:11:14,900
+say we want just the text because a lot
+
+249
+00:11:14,900 --> 00:11:16,250
+of the time you're not going to want the
+
+250
+00:11:16,250 --> 00:11:19,160
+actual tag so in that case we can just
+
+251
+00:11:19,160 --> 00:11:22,910
+add here a double colon title whoops
+
+252
+00:11:22,910 --> 00:11:24,350
+what I do
+
+253
+00:11:24,350 --> 00:11:27,830
+I'm sorry not title text let's run that
+
+254
+00:11:27,830 --> 00:11:31,910
+again it's a double colon text and that
+
+255
+00:11:31,910 --> 00:11:35,150
+gives us just the text okay so let's
+
+256
+00:11:35,150 --> 00:11:36,850
+let's experiment with this a little bit
+
+257
+00:11:36,850 --> 00:11:40,490
+so we have a we have h threes H 2's
+
+258
+00:11:40,490 --> 00:11:43,310
+paragraphs let's go ahead and say
+
+259
+00:11:43,310 --> 00:11:49,480
+response dot CSS and let's pass in h3
+
+260
+00:11:49,480 --> 00:11:54,500
+text dot get okay so what that does is
+
+261
+00:11:54,500 --> 00:11:57,260
+it gets us the text of the first h3 so
+
+262
+00:11:57,260 --> 00:11:59,420
+keep up to date with this scraping it's
+
+263
+00:11:59,420 --> 00:12:02,510
+this right here all right now if we want
+
+264
+00:12:02,510 --> 00:12:05,600
+the second one we can just go right here
+
+265
+00:12:05,600 --> 00:12:07,700
+and put in a set of brackets and put in
+
+266
+00:12:07,700 --> 00:12:10,160
+a 1 okay that'll give us a second if we
+
+267
+00:12:10,160 --> 00:12:12,170
+want the third we can put in 2 so it's
+
+268
+00:12:12,170 --> 00:12:14,480
+just like a list or an array and that's
+
+269
+00:12:14,480 --> 00:12:17,390
+the third one if we want to get all the
+
+270
+00:12:17,390 --> 00:12:20,210
+h3 s then we can get rid of this and we
+
+271
+00:12:20,210 --> 00:12:23,660
+can use the get all method so that gets
+
+272
+00:12:23,660 --> 00:12:26,720
+us all of the h3 texts and puts it into
+
+273
+00:12:26,720 --> 00:12:29,540
+a selector list if we want to include
+
+274
+00:12:29,540 --> 00:12:31,339
+the tags and attributes and all that
+
+275
+00:12:31,339 --> 00:12:33,680
+then we can just do that without text
+
+276
+00:12:33,680 --> 00:12:36,710
+and that will put you know the actual h3
+
+277
+00:12:36,710 --> 00:12:39,470
+ID classes whatever else is attached to
+
+278
+00:12:39,470 --> 00:12:45,160
+it ok so that's how we can select by tag
+
+279
+00:12:45,160 --> 00:12:48,080
+let's see what else we can also select
+
+280
+00:12:48,080 --> 00:12:52,330
+by like class or ID so if we open up
+
+281
+00:12:52,330 --> 00:12:57,110
+this and let's open up our google chrome
+
+282
+00:12:57,110 --> 00:13:01,100
+tools here so the the dev tools are they
+
+283
+00:13:01,100 --> 00:13:02,630
+definitely come in handy when you're
+
+284
+00:13:02,630 --> 00:13:04,160
+dealing with web scraping because you
+
+285
+00:13:04,160 --> 00:13:05,930
+need to know the structure of what
+
+286
+00:13:05,930 --> 00:13:07,880
+you're scraping so if we take a look at
+
+287
+00:13:07,880 --> 00:13:12,140
+a post right so this is post listing
+
+288
+00:13:12,140 --> 00:13:14,420
+wraps all of them and then each post has
+
+289
+00:13:14,420 --> 00:13:17,340
+a div with the class of post item
+
+290
+00:13:17,340 --> 00:13:19,050
+and in that post item we have a header
+
+291
+00:13:19,050 --> 00:13:22,290
+post header post content inside post
+
+292
+00:13:22,290 --> 00:13:25,170
+header we have an h2 with a link and
+
+293
+00:13:25,170 --> 00:13:29,010
+then the text for the heading okay then
+
+294
+00:13:29,010 --> 00:13:32,580
+we have a byline span with the class of
+
+295
+00:13:32,580 --> 00:13:34,950
+date that has an icon and a link and
+
+296
+00:13:34,950 --> 00:13:37,440
+then the date text so it's important to
+
+297
+00:13:37,440 --> 00:13:39,540
+know the structure it's it's like using
+
+298
+00:13:39,540 --> 00:13:42,510
+CSS or jQuery where you need to select
+
+299
+00:13:42,510 --> 00:13:45,720
+certain things so let's say we want to
+
+300
+00:13:45,720 --> 00:13:49,280
+get the whole post header so I could do
+
+301
+00:13:49,280 --> 00:13:54,240
+it's a response CSS and let's do dot
+
+302
+00:13:54,240 --> 00:13:56,970
+post - header so we can select by a
+
+303
+00:13:56,970 --> 00:13:59,790
+class and we could get all so that gives
+
+304
+00:13:59,790 --> 00:14:02,130
+us all the post headers or we could get
+
+305
+00:14:02,130 --> 00:14:04,650
+the first one you can do get like that
+
+306
+00:14:04,650 --> 00:14:06,900
+let's say we wanted to get the first
+
+307
+00:14:06,900 --> 00:14:09,360
+link in the post header we could just
+
+308
+00:14:09,360 --> 00:14:12,420
+add an A okay if we wanted to get just
+
+309
+00:14:12,420 --> 00:14:15,510
+the text of the first link could do that
+
+310
+00:14:15,510 --> 00:14:19,830
+if we want to get the second one I could
+
+311
+00:14:19,830 --> 00:14:23,220
+do that let's just the date alright so
+
+312
+00:14:23,220 --> 00:14:28,530
+pretty easy we can also use regular
+
+313
+00:14:28,530 --> 00:14:30,360
+expressions okay so there's a method
+
+314
+00:14:30,360 --> 00:14:33,150
+called re for regular expressions so if
+
+315
+00:14:33,150 --> 00:14:38,100
+I say response dot CSS and let's say we
+
+316
+00:14:38,100 --> 00:14:41,630
+want to get all the paragraph text and
+
+317
+00:14:41,630 --> 00:14:45,480
+let's say dot our e and in here we have
+
+318
+00:14:45,480 --> 00:14:47,370
+to format this with an our string like
+
+319
+00:14:47,370 --> 00:14:49,920
+this and let's say we want to get all
+
+320
+00:14:49,920 --> 00:14:51,930
+the instances of the word scraping
+
+321
+00:14:51,930 --> 00:14:54,660
+that'll do that if we want to get all
+
+322
+00:14:54,660 --> 00:14:57,570
+the instances of just anything that
+
+323
+00:14:57,570 --> 00:14:59,790
+starts with s so we can put in a word
+
+324
+00:14:59,790 --> 00:15:03,210
+character here and then + and that just
+
+325
+00:15:03,210 --> 00:15:05,210
+gives us everything that starts with a s
+
+326
+00:15:05,210 --> 00:15:08,520
+even if we wanted to get like right here
+
+327
+00:15:08,520 --> 00:15:10,950
+it says whether you are say we wanted to
+
+328
+00:15:10,950 --> 00:15:14,460
+get every word that has you the word you
+
+329
+00:15:14,460 --> 00:15:16,320
+in the middle of it we could go ahead
+
+330
+00:15:16,320 --> 00:15:20,160
+and do let's get rid of this and for our
+
+331
+00:15:20,160 --> 00:15:22,170
+regular expression we'll put a word
+
+332
+00:15:22,170 --> 00:15:26,100
+character and then the word you and then
+
+333
+00:15:26,100 --> 00:15:28,700
+another one so slashed up
+
+334
+00:15:28,700 --> 00:15:31,310
+U+ and it gives us every word that has
+
+335
+00:15:31,310 --> 00:15:33,400
+you in the middle so whether you are
+
+336
+00:15:33,400 --> 00:15:36,260
+actions you will when you should and so
+
+337
+00:15:36,260 --> 00:15:38,210
+on okay so you can put any regular
+
+338
+00:15:38,210 --> 00:15:41,210
+expression you can get data that way so
+
+339
+00:15:41,210 --> 00:15:43,990
+now what I want to do is take a look at
+
+340
+00:15:43,990 --> 00:15:49,190
+using XPath selectors so XPath is a it's
+
+341
+00:15:49,190 --> 00:15:51,440
+a language for selecting nodes in XML
+
+342
+00:15:51,440 --> 00:15:53,560
+documents and it can also be used with
+
+343
+00:15:53,560 --> 00:15:57,590
+HTML it's it's really difficult for me
+
+344
+00:15:57,590 --> 00:15:59,840
+actually it's kind of confusing but
+
+345
+00:15:59,840 --> 00:16:01,670
+these CSS selectors are kind of like
+
+346
+00:16:01,670 --> 00:16:04,820
+syntactic sugar for the XPath selectors
+
+347
+00:16:04,820 --> 00:16:06,710
+the XPath is what's happening under the
+
+348
+00:16:06,710 --> 00:16:09,800
+hood but you can use them directly like
+
+349
+00:16:09,800 --> 00:16:13,460
+say response dot XPath and let's say we
+
+350
+00:16:13,460 --> 00:16:15,890
+want to get all the h3 s we can do slash
+
+351
+00:16:15,890 --> 00:16:20,600
+slash h3 so if I do that then we get all
+
+352
+00:16:20,600 --> 00:16:25,970
+the h3 s if we wanted to get all the h3
+
+353
+00:16:25,970 --> 00:16:28,370
+to just the text we could do slash and
+
+354
+00:16:28,370 --> 00:16:33,470
+then txt with parentheses oh I'm sorry
+
+355
+00:16:33,470 --> 00:16:35,630
+we need to call a method so we can use
+
+356
+00:16:35,630 --> 00:16:39,890
+extract we can also use get all here as
+
+357
+00:16:39,890 --> 00:16:46,520
+well okay now with the chrome tools let
+
+358
+00:16:46,520 --> 00:16:48,560
+me just clear this up with our chrome
+
+359
+00:16:48,560 --> 00:16:51,050
+tools we can select we can get the XPath
+
+360
+00:16:51,050 --> 00:16:52,880
+for certain elements so let's say for
+
+361
+00:16:52,880 --> 00:16:55,310
+this author right here if I select that
+
+362
+00:16:55,310 --> 00:16:57,950
+this link and then I right-click and I
+
+363
+00:16:57,950 --> 00:17:00,500
+copy you can see there's an option to
+
+364
+00:17:00,500 --> 00:17:03,650
+copy the XPath so if I do that and then
+
+365
+00:17:03,650 --> 00:17:07,160
+I go back over here and I do response
+
+366
+00:17:07,160 --> 00:17:14,599
+dot XPath dots extract and then here I
+
+367
+00:17:14,599 --> 00:17:16,819
+put in some quotes and paste in what I
+
+368
+00:17:16,819 --> 00:17:20,390
+copied and run that I get the link with
+
+369
+00:17:20,390 --> 00:17:24,170
+the author okay and I can even pass in
+
+370
+00:17:24,170 --> 00:17:27,920
+here at the end slash text and just get
+
+371
+00:17:27,920 --> 00:17:31,370
+the text okay so you can use XPath
+
+372
+00:17:31,370 --> 00:17:33,080
+selectors as well and you can actually
+
+373
+00:17:33,080 --> 00:17:35,120
+target better with XPath there's more
+
+374
+00:17:35,120 --> 00:17:36,560
+things you can do it's just much more
+
+375
+00:17:36,560 --> 00:17:39,360
+difficult at least in my opinion
+
+376
+00:17:39,360 --> 00:17:41,760
+so let's see the next thing I want to do
+
+377
+00:17:41,760 --> 00:17:44,840
+is what I said I want to get the the
+
+378
+00:17:44,840 --> 00:17:48,419
+title the date and the author and we're
+
+379
+00:17:48,419 --> 00:17:50,340
+first going to do that in the terminal
+
+380
+00:17:50,340 --> 00:17:52,140
+here and we're going to do it with just
+
+381
+00:17:52,140 --> 00:17:53,640
+the first post and then I'll show you
+
+382
+00:17:53,640 --> 00:17:55,019
+how we can kind of loop through the
+
+383
+00:17:55,019 --> 00:17:59,279
+posts and get each each set of data so
+
+384
+00:17:59,279 --> 00:18:01,019
+let's set a variable so we can set
+
+385
+00:18:01,019 --> 00:18:03,450
+variables here and we're gonna say set
+
+386
+00:18:03,450 --> 00:18:08,669
+this post to response dot CSS okay so
+
+387
+00:18:08,669 --> 00:18:11,279
+these queries we can put them inside of
+
+388
+00:18:11,279 --> 00:18:14,960
+variables and we want to grab the div
+
+389
+00:18:14,960 --> 00:18:18,750
+with the class of post - item and the
+
+390
+00:18:18,750 --> 00:18:20,730
+reason for that is like I showed you
+
+391
+00:18:20,730 --> 00:18:24,960
+each post is wrapped in this post item
+
+392
+00:18:24,960 --> 00:18:26,309
+so I'm basically selecting the whole
+
+393
+00:18:26,309 --> 00:18:30,120
+post and putting it into a variable and
+
+394
+00:18:30,120 --> 00:18:32,279
+I want the I just want the first one so
+
+395
+00:18:32,279 --> 00:18:35,909
+we're gonna put 0 if I type post it's
+
+396
+00:18:35,909 --> 00:18:38,130
+going to show you the selector or the
+
+397
+00:18:38,130 --> 00:18:42,419
+selector list now to set the title
+
+398
+00:18:42,419 --> 00:18:45,149
+variable I'm going to set it to post dot
+
+399
+00:18:45,149 --> 00:18:48,570
+CSS so instead of using your spawn CSS
+
+400
+00:18:48,570 --> 00:18:50,880
+I'm actually using that post variable
+
+401
+00:18:50,880 --> 00:18:54,210
+and I'm gonna go into let's say we want
+
+402
+00:18:54,210 --> 00:18:58,470
+to go into the post header and from
+
+403
+00:18:58,470 --> 00:19:00,600
+there I'm going to go into the h2 and
+
+404
+00:19:00,600 --> 00:19:03,990
+then into the link and then I want the
+
+405
+00:19:03,990 --> 00:19:05,700
+text from that link so that's going to
+
+406
+00:19:05,700 --> 00:19:07,860
+give me the title right and I'm gonna
+
+407
+00:19:07,860 --> 00:19:12,659
+get first link the first one and we're
+
+408
+00:19:12,659 --> 00:19:15,269
+gonna use the get method so if I do
+
+409
+00:19:15,269 --> 00:19:18,090
+title that gives me just the text of the
+
+410
+00:19:18,090 --> 00:19:21,840
+the first post title if I want to do the
+
+411
+00:19:21,840 --> 00:19:26,519
+date let's see let's change this to date
+
+412
+00:19:26,519 --> 00:19:30,960
+now the date and stuff they I mean the
+
+413
+00:19:30,960 --> 00:19:33,179
+the structure of the HTML makes it
+
+414
+00:19:33,179 --> 00:19:35,519
+either more difficult or easier in this
+
+415
+00:19:35,519 --> 00:19:37,590
+case there's no class or anything on the
+
+416
+00:19:37,590 --> 00:19:40,049
+date if there was if there was I could
+
+417
+00:19:40,049 --> 00:19:42,630
+just do like a dot date or something
+
+418
+00:19:42,630 --> 00:19:44,340
+like that but in this case we're just
+
+419
+00:19:44,340 --> 00:19:47,399
+gonna grab from the header the second
+
+420
+00:19:47,399 --> 00:19:50,010
+link I'm sorry should be one so the
+
+421
+00:19:50,010 --> 00:19:52,409
+second link is actually the date so now
+
+422
+00:19:52,409 --> 00:19:53,040
+if I go ahead
+
+423
+00:19:53,040 --> 00:19:56,220
+I type date gives me the date okay for
+
+424
+00:19:56,220 --> 00:19:59,250
+the author same thing there's no class
+
+425
+00:19:59,250 --> 00:20:02,820
+directly on the link so we're gonna set
+
+426
+00:20:02,820 --> 00:20:09,600
+to the a third link in the post header
+
+427
+00:20:09,600 --> 00:20:13,680
+in the post so author there we go
+
+428
+00:20:13,680 --> 00:20:15,600
+alright so that's how we can do that
+
+429
+00:20:15,600 --> 00:20:18,450
+with just a single post now I'm going to
+
+430
+00:20:18,450 --> 00:20:20,310
+show you how we can loop through so
+
+431
+00:20:20,310 --> 00:20:26,900
+we're gonna say for post in response
+
+432
+00:20:27,860 --> 00:20:34,530
+response dot CSS and we want to grab say
+
+433
+00:20:34,530 --> 00:20:38,400
+div dot post - I eat them okay so we're
+
+434
+00:20:38,400 --> 00:20:40,020
+going to create a loop here so we're
+
+435
+00:20:40,020 --> 00:20:43,410
+looping through our posts and we want to
+
+436
+00:20:43,410 --> 00:20:45,180
+tap make sure you tab over here since
+
+437
+00:20:45,180 --> 00:20:47,370
+we're in the shell or else is just going
+
+438
+00:20:47,370 --> 00:20:49,410
+to end the line when you hit enter we
+
+439
+00:20:49,410 --> 00:20:51,240
+want to create a variable for each one
+
+440
+00:20:51,240 --> 00:20:55,910
+so title will take the post CSS and
+
+441
+00:20:55,910 --> 00:21:00,230
+inside here let's say post dots
+
+442
+00:21:00,230 --> 00:21:03,240
+I'm sorry not post on head our post -
+
+443
+00:21:03,240 --> 00:21:08,940
+header dot post - header and then from
+
+444
+00:21:08,940 --> 00:21:11,910
+there we're going to get the h2 from
+
+445
+00:21:11,910 --> 00:21:14,610
+there the link and we want the text I
+
+446
+00:21:14,610 --> 00:21:19,230
+want the first one and we want to get
+
+447
+00:21:19,230 --> 00:21:21,450
+okay so I'm going to enter and then tab
+
+448
+00:21:21,450 --> 00:21:25,710
+over and then let's add the date and
+
+449
+00:21:25,710 --> 00:21:29,870
+we're gonna say post start CSS
+
+450
+00:21:31,330 --> 00:21:37,060
+post header link we want the second link
+
+451
+00:21:37,060 --> 00:21:41,140
+this time we want to get it and then we
+
+452
+00:21:41,140 --> 00:21:49,410
+want the author so that'll be post
+
+453
+00:21:49,410 --> 00:21:56,010
+header link text we want the third one
+
+454
+00:21:56,010 --> 00:21:58,690
+and we want to get it and then for the
+
+455
+00:21:58,690 --> 00:22:00,310
+last line I'm gonna go ahead and print
+
+456
+00:22:00,310 --> 00:22:02,980
+and I want to print out a dictionary so
+
+457
+00:22:02,980 --> 00:22:06,550
+I'm going to use the the D ICT function
+
+458
+00:22:06,550 --> 00:22:09,160
+here and then pass in title is going to
+
+459
+00:22:09,160 --> 00:22:14,050
+be the title variable date will be the
+
+460
+00:22:14,050 --> 00:22:18,370
+date variable and the author will be the
+
+461
+00:22:18,370 --> 00:22:21,340
+author variable okay so we'll run that
+
+462
+00:22:21,340 --> 00:22:24,490
+and you can see that now we have a bunch
+
+463
+00:22:24,490 --> 00:22:26,650
+of dictionaries that have the title the
+
+464
+00:22:26,650 --> 00:22:29,080
+date and the author so we've looped
+
+465
+00:22:29,080 --> 00:22:30,970
+through all the posts and outputted that
+
+466
+00:22:30,970 --> 00:22:34,120
+data so we now what we want to do is
+
+467
+00:22:34,120 --> 00:22:36,160
+kind of the same thing but we want to do
+
+468
+00:22:36,160 --> 00:22:38,620
+it within our file and we want to create
+
+469
+00:22:38,620 --> 00:22:42,160
+a JSON file not just print it out so now
+
+470
+00:22:42,160 --> 00:22:48,280
+I think we're pretty much done here yeah
+
+471
+00:22:48,280 --> 00:22:49,930
+let's just let's get out of this so I'll
+
+472
+00:22:49,930 --> 00:22:55,780
+just go ahead and quit so let's go back
+
+473
+00:22:55,780 --> 00:23:01,480
+into our file and I'm gonna get rid of
+
+474
+00:23:01,480 --> 00:23:03,490
+this second one here and I'm just going
+
+475
+00:23:03,490 --> 00:23:06,250
+to use the route URL because again I'm
+
+476
+00:23:06,250 --> 00:23:07,870
+going to show you how we can go through
+
+477
+00:23:07,870 --> 00:23:09,760
+all the pages without having to actually
+
+478
+00:23:09,760 --> 00:23:14,260
+manually add them so we want that there
+
+479
+00:23:14,260 --> 00:23:17,230
+and then in the parse we don't need any
+
+480
+00:23:17,230 --> 00:23:19,480
+of this we're not just gonna copy the
+
+481
+00:23:19,480 --> 00:23:22,570
+pages like we did before we want to loop
+
+482
+00:23:22,570 --> 00:23:24,370
+through like I just showed you we're
+
+483
+00:23:24,370 --> 00:23:30,400
+gonna say for post in response dot CSS
+
+484
+00:23:30,400 --> 00:23:32,710
+so we use these selectors the same way
+
+485
+00:23:32,710 --> 00:23:38,300
+as we did in the shell div dot post item
+
+486
+00:23:38,300 --> 00:23:40,370
+okay so we want to loop through the post
+
+487
+00:23:40,370 --> 00:23:43,100
+and then we need to yield so since we're
+
+488
+00:23:43,100 --> 00:23:44,510
+in this file we're going to yield a
+
+489
+00:23:44,510 --> 00:23:49,670
+dictionary with the title and that's
+
+490
+00:23:49,670 --> 00:23:53,590
+going to come from post dot CSS
+
+491
+00:23:53,590 --> 00:23:57,320
+ultimately it's going to be it's going
+
+492
+00:23:57,320 --> 00:24:07,700
+to be the post header h2 link text first
+
+493
+00:24:07,700 --> 00:24:11,990
+one dot get okay and then I'm just gonna
+
+494
+00:24:11,990 --> 00:24:14,810
+copy that down twice and then this one
+
+495
+00:24:14,810 --> 00:24:17,930
+is gonna be one we don't need the h2
+
+496
+00:24:17,930 --> 00:24:24,260
+here or here and this will be too so
+
+497
+00:24:24,260 --> 00:24:27,380
+pretty much the same thing we did yeah
+
+498
+00:24:27,380 --> 00:24:28,760
+so that should do it we just need to
+
+499
+00:24:28,760 --> 00:24:30,860
+change the keys so this one here will be
+
+500
+00:24:30,860 --> 00:24:33,470
+the date because the date is the second
+
+501
+00:24:33,470 --> 00:24:35,990
+link and then the author is the third
+
+502
+00:24:35,990 --> 00:24:38,180
+link and again this could be a class if
+
+503
+00:24:38,180 --> 00:24:40,070
+there was an actual class on the link or
+
+504
+00:24:40,070 --> 00:24:42,620
+an ID or something all right so just
+
+505
+00:24:42,620 --> 00:24:46,400
+doing that I think we should be good so
+
+506
+00:24:46,400 --> 00:24:47,960
+I'm gonna save and then I'm gonna go
+
+507
+00:24:47,960 --> 00:24:54,050
+down here and if I just run scrapy crawl
+
+508
+00:24:54,050 --> 00:24:59,750
+and then post all it's gonna do really
+
+509
+00:24:59,750 --> 00:25:02,420
+is just show me down here in the console
+
+510
+00:25:02,420 --> 00:25:04,490
+you can see the data the title and so on
+
+511
+00:25:04,490 --> 00:25:07,220
+so we want to actually put this into a
+
+512
+00:25:07,220 --> 00:25:10,010
+JSON file so we just want to add on to
+
+513
+00:25:10,010 --> 00:25:13,690
+this the output flag and say post dot
+
+514
+00:25:13,690 --> 00:25:17,300
+jason and you can do that jl format
+
+515
+00:25:17,300 --> 00:25:20,030
+which is a jason list you can do CSV you
+
+516
+00:25:20,030 --> 00:25:22,280
+can do all kinds of stuff we're gonna do
+
+517
+00:25:22,280 --> 00:25:26,060
+a JSON file and check it out so now we
+
+518
+00:25:26,060 --> 00:25:28,820
+have adjacent array with all of the
+
+519
+00:25:28,820 --> 00:25:30,710
+posts but notice it's only on the first
+
+520
+00:25:30,710 --> 00:25:33,170
+page okay so we have all the posts on
+
+521
+00:25:33,170 --> 00:25:34,880
+the first page so now I'm going to show
+
+522
+00:25:34,880 --> 00:25:37,960
+you how we can actually follow links and
+
+523
+00:25:37,960 --> 00:25:41,720
+scrape data from other pages so if we go
+
+524
+00:25:41,720 --> 00:25:45,920
+back here and we go down to the
+
+525
+00:25:45,920 --> 00:25:48,260
+pagination so this right here older
+
+526
+00:25:48,260 --> 00:25:50,160
+posts and we take a look
+
+527
+00:25:50,160 --> 00:25:52,410
+at that so this it's this is going to be
+
+528
+00:25:52,410 --> 00:25:54,300
+pretty easy because this link has a
+
+529
+00:25:54,300 --> 00:25:57,840
+class of next post link right so
+
+530
+00:25:57,840 --> 00:26:00,060
+remember that and then it has an H an
+
+531
+00:26:00,060 --> 00:26:02,130
+href attribute that goes to the next
+
+532
+00:26:02,130 --> 00:26:06,470
+page that we want to scrape so back here
+
+533
+00:26:06,470 --> 00:26:09,480
+we want to go on the same level as our
+
+534
+00:26:09,480 --> 00:26:12,600
+for loop here and create a next page
+
+535
+00:26:12,600 --> 00:26:15,210
+variable and we're going to set that to
+
+536
+00:26:15,210 --> 00:26:21,360
+response dot CSS and remember it's a
+
+537
+00:26:21,360 --> 00:26:24,960
+link with a class of next what was it
+
+538
+00:26:24,960 --> 00:26:28,320
+next post link but we want the actual
+
+539
+00:26:28,320 --> 00:26:30,420
+attribute so we can do this we can do
+
+540
+00:26:30,420 --> 00:26:33,870
+double : attribute and we want to get
+
+541
+00:26:33,870 --> 00:26:36,720
+whatever's in the href okay I should I
+
+542
+00:26:36,720 --> 00:26:38,340
+could have showed you this in the shell
+
+543
+00:26:38,340 --> 00:26:41,460
+as well and then get so that'll give us
+
+544
+00:26:41,460 --> 00:26:43,650
+the actual link to the next page now we
+
+545
+00:26:43,650 --> 00:26:45,450
+want to make sure that there is a next
+
+546
+00:26:45,450 --> 00:26:53,180
+page so let's say if if next page is is
+
+547
+00:26:53,180 --> 00:26:57,750
+not none because if there is no next
+
+548
+00:26:57,750 --> 00:26:59,490
+page if that link doesn't exist it's
+
+549
+00:26:59,490 --> 00:27:01,560
+gonna be none so we want to say if it's
+
+550
+00:27:01,560 --> 00:27:04,950
+not none then let's say next page is
+
+551
+00:27:04,950 --> 00:27:07,950
+gonna equal response dot and then
+
+552
+00:27:07,950 --> 00:27:11,700
+there's a method called URL join and we
+
+553
+00:27:11,700 --> 00:27:14,430
+want to join in the next page okay so
+
+554
+00:27:14,430 --> 00:27:16,590
+basically we're scraping the next page
+
+555
+00:27:16,590 --> 00:27:18,510
+as well and then the last thing we have
+
+556
+00:27:18,510 --> 00:27:22,790
+to do is just call yield scrape beat dot
+
+557
+00:27:22,790 --> 00:27:26,750
+request and that takes in our next page
+
+558
+00:27:26,750 --> 00:27:30,630
+and a callback and in this case it's
+
+559
+00:27:30,630 --> 00:27:32,190
+going to be our parse because we want to
+
+560
+00:27:32,190 --> 00:27:33,720
+run our parse again so we'll set
+
+561
+00:27:33,720 --> 00:27:37,890
+callback equal to our self dot parse
+
+562
+00:27:37,890 --> 00:27:40,290
+method so I'm going to save this and now
+
+563
+00:27:40,290 --> 00:27:41,970
+what should happen is it should scrape
+
+564
+00:27:41,970 --> 00:27:43,770
+the entire site so I'm going to delete
+
+565
+00:27:43,770 --> 00:27:46,760
+this JSON file that we just created and
+
+566
+00:27:46,760 --> 00:27:50,040
+I'm gonna run this again so output post
+
+567
+00:27:50,040 --> 00:27:52,200
+Jason and it's going to take a little
+
+568
+00:27:52,200 --> 00:27:54,270
+longer because there's more data to go
+
+569
+00:27:54,270 --> 00:27:55,880
+through
+
+570
+00:27:55,880 --> 00:27:58,140
+so right now it's just scraping the
+
+571
+00:27:58,140 --> 00:28:03,350
+entire blog and if I go to my post Jason
+
+572
+00:28:03,350 --> 00:28:06,169
+so there's now there's tons more data
+
+573
+00:28:06,169 --> 00:28:08,059
+because it went through every single
+
+574
+00:28:08,059 --> 00:28:11,450
+page and it took the title the date and
+
+575
+00:28:11,450 --> 00:28:15,110
+the author alright so I mean that's
+
+576
+00:28:15,110 --> 00:28:17,000
+pretty much it there's a lot more you
+
+577
+00:28:17,000 --> 00:28:19,850
+can do that's much more advanced but I
+
+578
+00:28:19,850 --> 00:28:21,559
+think that just for the amount of code
+
+579
+00:28:21,559 --> 00:28:23,870
+that we wrote here what is this it's 21
+
+580
+00:28:23,870 --> 00:28:27,890
+lines counting the the spaces here so
+
+581
+00:28:27,890 --> 00:28:29,990
+you know less than 20 lines of code and
+
+582
+00:28:29,990 --> 00:28:32,000
+we're able to scrape an entire website
+
+583
+00:28:32,000 --> 00:28:35,330
+and get certain pieces of data I don't
+
+584
+00:28:35,330 --> 00:28:39,020
+know how useful some blog fields are but
+
+585
+00:28:39,020 --> 00:28:41,539
+if you go to like an e-commerce site for
+
+586
+00:28:41,539 --> 00:28:43,460
+a certain category maybe you want to
+
+587
+00:28:43,460 --> 00:28:45,770
+have a list of all the products or
+
+588
+00:28:45,770 --> 00:28:46,870
+something like that
+
+589
+00:28:46,870 --> 00:28:49,370
+scrapy is really good for for stuff like
+
+590
+00:28:49,370 --> 00:28:51,350
+that so hopefully you learned something
+
+591
+00:28:51,350 --> 00:28:53,419
+here and you enjoyed it and that's it I
+
+592
+00:28:53,419 --> 00:28:56,590
+will see you in the next video
+
